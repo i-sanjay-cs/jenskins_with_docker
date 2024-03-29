@@ -4,15 +4,14 @@ FROM python:3.8-slim
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the Python script into the container
-COPY app.py /app/
+# Copy the Python script and requirements file into the container
+COPY app.py requirements.txt ./
 
-# Install any needed dependencies specified in requirements.txt
-COPY requirements.txt /app/
+# Install Flask
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Set ChromeDriver path in the container
-COPY C:\Users\sanja\Downloads\chromedriver-win64 (1)\chromedriver-win64\chromedriver.exe /usr/local/bin/
+# Expose the Flask application port
+EXPOSE 5000
 
-# Run the Python script when the container launches
-CMD ["python", "app.py"]
+# Run the Flask application when the container launches
+CMD ["python", "app.py", "&", "sleep", "300", "&&", "pkill", "python"]

@@ -1,34 +1,10 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+from flask import Flask
 
-# Set Chrome options and set headless mode
-options = webdriver.ChromeOptions()
-options.add_argument("--headless")
-options.binary_location = r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"  # Specify the Chrome executable path here
+app = Flask(__name__)
 
-# Create a new instance of the Chrome driver with options
-driver = webdriver.Chrome(options=options)
+@app.route('/')
+def index():
+    return 'Hello, World!'
 
-# Navigate to the Saucedemo login page
-driver.get("https://www.saucedemo.com/")
-# Rest of your script remains the same...
-
-
-# Enter username and password
-username_input = driver.find_element(By.ID, "user-name")
-password_input = driver.find_element(By.ID, "password")
-username_input.send_keys("standard_user")
-password_input.send_keys("secret_sauce")
-
-# Click the login button
-login_button = driver.find_element(By.ID, "login-button")
-login_button.click()
-
-# Verify if login is successful
-if "inventory.html" in driver.current_url:
-    print("Login Successful!")
-else:
-    print("Login Failed!")
-
-# Close the browser
-driver.quit()
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
