@@ -4,8 +4,12 @@ from selenium.webdriver.common.by import By
 # Set ChromeDriver path
 chrome_driver_path = r"C:\\Users\\sanja\\Downloads\\chromedriver-win64 (1)\\chromedriver.exe"
 
-# Create a new instance of the Chrome driver
-driver = webdriver.Chrome(executable_path=chrome_driver_path)
+# Create Chrome options and set headless mode
+options = webdriver.ChromeOptions()
+options.add_argument("--headless")
+
+# Create a new instance of the Chrome driver with options
+driver = webdriver.Chrome(executable_path=chrome_driver_path, options=options)
 
 # Navigate to the Saucedemo login page
 driver.get("https://www.saucedemo.com/")
