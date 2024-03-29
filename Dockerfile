@@ -1,15 +1,13 @@
 # Use an official Python runtime as a parent image
-FROM python:3.8-slim
+FROM python:3.8-buster
 
 # Set the working directory in the container
 WORKDIR /app
 
 # Copy the Python script and requirements file into the container
-COPY app.py requirements.txt ./
+RUN install Flask
 
-# Install Flask
-RUN pip install --no-cache-dir -r requirements.txt
-
+copy ./app
 # Expose the Flask application port
 EXPOSE 5000
 
