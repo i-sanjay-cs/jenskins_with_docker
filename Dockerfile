@@ -12,7 +12,7 @@ COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Set ChromeDriver path in the container
-COPY chromedriver.exe /usr/local/bin/
+COPY C:\Users\sanja\Downloads\chromedriver-win64 (1)\chromedriver-win64\chromedriver.exe /usr/local/bin/
 
 # Run the Python script when the container launches
 CMD ["python", "app.py"]
