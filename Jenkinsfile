@@ -10,7 +10,7 @@ node {
     stage('Build image') {
         /* This builds the actual image */
 
-        app = docker.build("sanjay8268/pywebapp")
+        app = docker.build("sanjay8268/my_flask_image")
     }
 
     stage('Test image') {
